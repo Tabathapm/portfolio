@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	// Iniciamos la conexión
+	// conexión
 	storage.ConectarDB()
 
 	r := gin.Default()

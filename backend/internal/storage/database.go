@@ -3,7 +3,7 @@ package storage
 import (
 	"fmt"
 	"log"
-	"os" // ¡Ahora sí lo vamos a usar!
+	"os"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
@@ -24,7 +24,7 @@ func ConectarDB() {
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
 	dbname := os.Getenv("DB_NAME")
-	host := "127.0.0.1" // Usar IP directa a veces evita líos con localhost en Windows
+	host := "127.0.0.1" // Usar IP directa a veces evita problemas con localhost en Windows
 	port := os.Getenv("DB_PORT")
 
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", 
