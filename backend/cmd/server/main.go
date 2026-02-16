@@ -2,20 +2,23 @@ package main
 
 import (
 	"github.com/Tabathapm/portfolio/backend/internal/storage"
+	"github.com/Tabathapm/portfolio/backend/internal/models" // Se importa el nuevo modelo.
+	"github.com/Tabathapm/portfolio/backend/internal/handlers"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// conexión
+	// Conexión a la DB
 	storage.ConectarDB()
+
+	// Automigración: GORM crea la tabla "proyectos" basándose en el struct
+	// Si ya existe, la actualiza sin borrar los datos.
+	storage.DB.AutoMigrate(&models.Proyecto{})
 
 	r := gin.Default()
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "Backend online y conectado a la DB. ¡Todo marcha bien! 🧣",
-		})
-	})
+	// Nueva ruta para crear proyectos
+	r.POST("/proyectos", handlers.CrearProyecto)
 
 	r.Run(":8080")
 }
