@@ -30,3 +30,18 @@ func CrearProyecto(c *gin.Context) {
 		"data":    nuevoProyecto,
 	})
 }
+
+func ListarProyectos(c *gin.Context) {
+	var listaDeProyectos []models.Proyecto
+
+	// GORM busca todos los registros de la tabla "proyectos"
+	resultado := storage.DB.Find(&listaDeProyectos)
+
+	if resultado.Error != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "No se pudo obtener los proyectos de la DB"})
+		return
+	}
+
+	// Se devuelve la lista en formato de JSON
+	c.JSON(http.StatusOK, listaDeProyectos)
+}

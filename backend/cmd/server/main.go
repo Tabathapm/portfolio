@@ -20,5 +20,8 @@ func main() {
 	// Nueva ruta para crear proyectos
 	r.POST("/proyectos", handlers.CrearProyecto)
 
+	//Ruta para listar los proyectos
+	r.GET("/proyectos", handlers.ListarProyectos)
+
 	r.Run(":8080")
 }
