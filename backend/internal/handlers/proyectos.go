@@ -24,7 +24,7 @@ func CrearProyecto(c *gin.Context) {
 		return
 	}
 
-	// 3. Si todo sale bien, se responde con éxito
+	// Si todo sale bien, se responde con éxito
 	c.JSON(http.StatusCreated, gin.H{
 		"mensaje": "¡Proyecto guardado con éxito!",
 		"data":    nuevoProyecto,
