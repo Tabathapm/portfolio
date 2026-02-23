@@ -24,3 +24,21 @@ yarn-error.log*
 .idea/
 dist-ssr
 *.local
+
+# Variables de entorno (Reforzado)
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env    
+frontend/.env.local
+
+# Logs y Temporales
+frontend/npm-debug.log*
+backend/debug.log
+
+# Vite y otros
+frontend/dist/
+frontend/dist-ssr/
+.vscode/
+.idea/
