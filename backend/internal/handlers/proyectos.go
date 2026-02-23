@@ -45,3 +45,17 @@ func ListarProyectos(c *gin.Context) {
 	// Se devuelve la lista en formato de JSON
 	c.JSON(http.StatusOK, listaDeProyectos)
 }
+
+// EliminarProyecto borra un registro por su ID
+func EliminarProyecto(c *gin.Context) {
+	id := c.Param("id")
+
+	// GORM borra el registro con el ID especificado
+	resultado := storage.DB.Delete(&models.Proyecto{}, id)
+    if resultado.Error != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "No se pudo eliminar el proyecto"})
+        return
+    }
+
+    c.JSON(http.StatusOK, gin.H{"mensaje": "¡Proyecto eliminado con éxito! ✨"})
+}
