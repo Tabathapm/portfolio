@@ -2,14 +2,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './views/Inicio';
 import Admin from './views/Admin';
 import RutaProtegida from './security/RutaProtegida'; 
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-slate-900 text-slate-100">
+        <Navbar />
+        
         <Routes>
           <Route path="/" element={<Inicio />} />
-          
+
           {/* Solo entran los que pasen por el filtro */}
           <Route 
             path="/admin" 
